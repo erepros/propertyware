@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property Listing</title>
+    <link
+      rel="stylesheet"
+      property="stylesheet"
+      href="https://app.propertyware.com/pw/website/widgets/listing.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Property Listings</h1>
+    <div
+      id="pw-listing-widget"
+      data-website-id="564592641"
+      data-widget-id="3100"
+      data-customer-id="0VHzryQqBxqlVtNOQgOfWDZZTSIfLoO"
+      data-widget-path="widget"
+      data-auto-height="true"
+    ></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sliderInner = document.querySelector(".slider_inner");
+        const prevButton = document.querySelector(".slider_button--prev");
+        const nextButton = document.querySelector(".slider_button--next");
+
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll(".slider_image").length;
+
+        function updateSlider() {
+          sliderInner.style.marginLeft = `-${currentSlide * 100}%`;
+        }
+
+        prevButton.addEventListener("click", function () {
+          if (currentSlide > 0) {
+            currentSlide--;
+          } else {
+            currentSlide = totalSlides - 1;
+          }
+          updateSlider();
+        });
+
+        nextButton.addEventListener("click", function () {
+          if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+          } else {
+            currentSlide = 0;
+          }
+          updateSlider();
+        });
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="https://app.propertyware.com/pw/website/widgets/listing.min.js"
+    ></script>
+  </body>
+</html>
