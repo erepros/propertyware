@@ -1,11 +1,11 @@
 /* General list item styling */
-.list_item {
+/* .list_item {
   width: 33%;
   display: inline-block;
   box-sizing: border-box;
   padding: 15px;
   vertical-align: top;
-}
+} */
 
 /* General card styling */
 .card {
@@ -27,24 +27,24 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.card--flat {
+/* .card--flat {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .card-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100% !important;
-  height: 50% !important; /* Set image to take 50% of card height */
+  height: 50% !important;
   overflow: hidden;
 }
 
 .card-image img {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Ensure the image covers the entire space */
+  object-fit: cover;
 }
 
 .card-text {
@@ -53,7 +53,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space out the text content evenly */
+  justify-content: space-between;
 }
 
 .card-property-title {
@@ -62,14 +62,14 @@
   font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 10px;
-  text-align: center; /* Center align title */
+  text-align: center;
 }
 
 .card-property-address {
   color: #666;
   font-size: 0.9em;
   margin-bottom: 15px;
-  text-align: center; /* Center align address */
+  text-align: center;
 }
 
 .card-property-address-top {
@@ -83,29 +83,29 @@
 .card-property-information {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align all content */
+  align-items: center;
   font-size: 0.9em;
-  margin-top: 20px; /* Added margin for spacing */
+  margin-top: 20px;
 }
 
 .card-property-prices {
   font-size: 1.2em;
   font-weight: bold;
   color: #27ae60;
-  margin-bottom: 10px; /* Added margin for spacing */
+  margin-bottom: 10px;
 }
 
 .card-property-date {
   color: #666;
   font-size: 0.8em;
-  margin-bottom: 10px; /* Added margin for spacing */
+  margin-bottom: 10px;
 }
 
 .card-property-details {
   display: flex;
   gap: 15px;
-  justify-content: center; /* Center align details */
-  margin-bottom: 10px; /* Added margin for spacing */
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .card-property-detail {
@@ -132,5 +132,5 @@
   margin-top: 15px;
   font-size: 0.9em;
   color: #666;
-  text-align: center; /* Center align address */
+  text-align: center;
 }
