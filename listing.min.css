@@ -9221,6 +9221,7 @@ fieldset[disabled] #pw-listing-widget .btn-control:hover {
   #pw-listing-widget .list-header .list-header-count,
   #pw-listing-widget .list-header .list-header-toggle {
     display: block;
+    margin-bottom: 10px;
   }
   #pw-listing-widget .list-header .list-header-sort-by {
     margin: 0;
