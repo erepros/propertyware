@@ -105702,7 +105702,7 @@
       })(r),
       i = n(291),
       a = function () {
-        window.location.href = "/"; // Redirect to homepage
+        window.location.href = "/?propertyTypes=1"; // Redirect to homepage
         return null; // This function will not return any JSX
       },
       s = function () {
