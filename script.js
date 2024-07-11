@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", function () {
+  var element = document.querySelector(".pw-header.navbar.navbar-default");
+  if (element) {
+    element.style.display = "none";
+  }
+});
+
 !(function (e) {
   function t(r) {
     if (n[r]) return n[r].exports;
@@ -19382,15 +19389,22 @@
                         { className: "card-property-details" },
                         l.default.createElement(
                           "span",
+
                           { className: "card-property-detail", style: r },
                           l.default.createElement("span", null, y),
-                          " bd"
+                          " ",
+                          l.default.createElement("i", {
+                            className: " fa-solid fa-bed",
+                          }) // Replacing "bd" with the bed icon
                         ),
                         l.default.createElement(
                           "span",
                           { className: "card-property-detail", style: r },
                           l.default.createElement("span", null, m),
-                          " ba"
+                          " ",
+                          l.default.createElement("i", {
+                            className: " fa-solid fa-bath",
+                          }) // Bath icon
                         )
                       ),
                       u &&
@@ -105702,7 +105716,7 @@
       })(r),
       i = n(291),
       a = function () {
-        window.location.href = "/?propertyTypes=1"; // Redirect to homepage
+        window.location.href = "/"; // Redirect to homepage
         return null; // This function will not return any JSX
       },
       s = function () {
@@ -105712,3 +105726,123 @@
   },
 ]);
 //# sourceMappingURL=listing.95d96b7f5289e1d55cb2.js.map
+document.addEventListener("DOMContentLoaded", () => {
+  const houseBtn = document.getElementById("houseBtn");
+  const apartmentBtn = document.getElementById("apartmentBtn");
+
+  houseBtn.addEventListener("click", () => {
+    window.location.href = updateQueryParameter(
+      window.location.href,
+      "propertyTypes",
+      "5"
+    );
+  });
+
+  apartmentBtn.addEventListener("click", () => {
+    window.location.href = updateQueryParameter(
+      window.location.href,
+      "propertyTypes",
+      "1"
+    );
+  });
+
+  function updateQueryParameter(url, key, value) {
+    const urlObj = new URL(url);
+    urlObj.searchParams.set(key, value);
+    return urlObj.toString();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM fully loaded and parsed");
+
+  const pwListingWidget = document.getElementById("pw-listing-widget");
+  if (!pwListingWidget) {
+    console.error("Element with ID 'pw-listing-widget' not found");
+    return;
+  }
+
+  // Adding a delay to wait for the widget content to load
+  setTimeout(() => {
+    console.log(
+      "pwListingWidget innerHTML after delay:",
+      pwListingWidget.innerHTML
+    );
+
+    const msScroll = pwListingWidget.querySelector(".ms-scroll");
+    if (!msScroll) {
+      console.error(
+        "Element with class 'ms-scroll' not found within #pw-listing-widget"
+      );
+      return;
+    }
+
+    const pwContent = msScroll.querySelector(".pw-content");
+    if (!pwContent) {
+      console.error(
+        "Element with class 'pw-content' not found within .ms-scroll"
+      );
+      return;
+    }
+
+    console.log("pwContent found:", pwContent);
+
+    let scrollAmount = 0;
+    let autoSlideInterval;
+
+    const slide = (direction) => {
+      const containerWidth = pwListingWidget.offsetWidth;
+      if (direction === "left") {
+        scrollAmount = Math.max(scrollAmount - containerWidth, 0);
+      } else if (direction === "right") {
+        scrollAmount = Math.min(
+          scrollAmount + containerWidth,
+          pwContent.scrollWidth - containerWidth
+        );
+      }
+      pwContent.style.transform = `translateX(-${scrollAmount}px)`;
+      console.log(
+        `Slid ${direction}: scrollAmount = ${scrollAmount}, containerWidth = ${containerWidth}`
+      );
+    };
+
+    const startAutoSlide = () => {
+      autoSlideInterval = setInterval(() => {
+        slide("right");
+        if (
+          scrollAmount >=
+          pwContent.scrollWidth - pwListingWidget.offsetWidth
+        ) {
+          scrollAmount = 0;
+        }
+      }, 3000); // Change 3000 to the desired interval in milliseconds
+    };
+
+    const stopAutoSlide = () => {
+      clearInterval(autoSlideInterval);
+    };
+
+    const leftButton = document.createElement("button");
+    leftButton.className = "slider-button left";
+    leftButton.innerText = "←";
+    leftButton.onclick = () => {
+      slide("left");
+      stopAutoSlide();
+      startAutoSlide();
+    };
+
+    const rightButton = document.createElement("button");
+    rightButton.className = "slider-button right";
+    rightButton.innerText = "→";
+    rightButton.onclick = () => {
+      slide("right");
+      stopAutoSlide();
+      startAutoSlide();
+    };
+
+    pwListingWidget.appendChild(leftButton);
+    pwListingWidget.appendChild(rightButton);
+
+    startAutoSlide();
+  }, 2000); // Adjust delay as necessary for your widget content to load
+});

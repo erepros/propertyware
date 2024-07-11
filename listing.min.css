@@ -8926,7 +8926,7 @@ fieldset[disabled] #pw-listing-widget .btn-control:hover {
   border-color: #fff;
 }
 #pw-listing-widget .card .card-property-description {
-  display: none;
+  display: none !important;
 }
 @media (min-width: 9999px) {
   #pw-listing-widget .card .card-property-address-bottom {
@@ -10312,47 +10312,56 @@ fieldset[disabled] #pw-listing-widget .btn-control:hover {
     margin: 0 0 0 180px;
   }
 }
-/*# sourceMappingURL=listing.605b44b9b3c8b5df44b907f45d51c452.css.map*/
-#pw-listing-widget .pw-content .row > .col-xs-12 > div > div {
+/* Adjust the container to hide overflow */
+#pw-listing-widget .ms-scroll {
+  overflow: hidden; /* Hide scrollbars */
+  position: relative;
+}
+
+/* Make the content flex horizontally */
+#pw-listing-widget .pw-content {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row; /* Ensure the items are displayed in a row */
+  white-space: nowrap; /* Prevent line breaks */
+  transition: transform 0.5s ease; /* Smooth transition */
 }
 
-#pw-listing-widget .pw-content .row > .col-xs-12 > div > div > .list_item {
-  width: calc(33.333% - 16px); /* Adjust the width as necessary */
-  margin: 8px; /* Adjust the margin as necessary */
-  box-sizing: border-box;
+/* Style each list item */
+#pw-listing-widget .list_item {
+  display: inline-block;
+  min-width: 300px; /* Adjust based on your requirement */
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  vertical-align: top; /* Align items to the top */
 }
 
-#pw-listing-widget
-  .pw-content
-  .row
-  > .col-xs-12
-  > div
-  > div
-  > .list_item:nth-child(3n + 1) {
-  clear: left;
+/* Hover effect for list items */
+#pw-listing-widget .list_item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Media query for mobile-sized screens */
-@media (max-width: 768px) {
-  #pw-listing-widget .pw-content .row > .col-xs-12 > div > div {
-    display: block; /* Switch back to block layout */
-  }
+/* Style for the slider buttons */
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
 
-  #pw-listing-widget .pw-content .row > .col-xs-12 > div > div > .list_item {
-    width: 100%; /* Make each item take full width */
-    margin: 0; /* Remove margins to avoid unwanted gaps */
-    box-sizing: border-box;
-  }
+.slider-button.left {
+  left: 10px;
+}
 
-  #pw-listing-widget
-    .pw-content
-    .row
-    > .col-xs-12
-    > div
-    > div
-    > .list_item:nth-child(3n + 1) {
-    clear: none;
-  }
+.slider-button.right {
+  right: 10px;
 }
